@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+import { Event } from '../interfaces/event';
 
 @Injectable({
   providedIn: 'root',
@@ -77,7 +78,7 @@ export class EventService {
     console.log('events--------', JSON.stringify(events));
     return events;
   }
-  getEvents(): Array<any> {
+  getEvents(): Array<Event> {
     return [
       {
         title: 'Greeting Meeting',

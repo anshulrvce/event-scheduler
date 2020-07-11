@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { EventService } from '../core/services/event.service';
 
+
+
 @Component({
  selector: 'app-scheduler',
  templateUrl: './scheduler.component.html',

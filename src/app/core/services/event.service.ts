@@ -21,11 +21,7 @@ export class EventService {
       events[i].id = i;
       events[i].collidingEvents = [];
       for (let j = 0; j < events.length; j++){
-          if ( events[i].start < events[j].start &&  events[j].start < events[i].end ||
-             events[i].start < events[j].end &&  events[j].end < events[i].end
-            || events[i].start === events[j].start &&  events[j].end === events[i].end
-            || events[j].start < events[i].start &&  events[i].start < events[j].end
-            || events[j].start < events[i].end &&  events[i].end < events[j].end  ){
+          if ( events[i].end > events[j].start && events[i].start < events[j].end ){
                 if ((events[j].start < endTime || endTime === null) && i !== j ){
                     endTime = events[j].end;
                     events[i].count = events[i].count + 1;
@@ -35,20 +31,6 @@ export class EventService {
           }
       }
     }
-
-    console.log(events);
-    // tslint:disable-next-line: prefer-for-of
-    for ( let i = 0; i < events.length; i++ ){
-        let count = events[i].count;
-
-        for ( let j = 0; j < events[i].collidingEvents.length; j++ ){
-            if (events[events[i].collidingEvents[j]].count > count){
-                count = events[events[i].collidingEvents[j]].count;
-            }
-        }
-        events[i].count = count;
-    }
-
     for (let i = 0; i < events.length; i++ ){
       console.log('event numebr', i);
       let position = 1;
@@ -75,6 +57,20 @@ export class EventService {
 
       events[i].position = position;
     }
+
+    console.log(JSON.stringify(events));
+    // tslint:disable-next-line: prefer-for-of
+    for ( let i = 0; i < events.length; i++ ){
+        let count = events[i].count;
+
+        for ( let j = 0; j < events[i].collidingEvents.length; j++ ){
+            if (events[events[i].collidingEvents[j]].count > count){
+                count = events[events[i].collidingEvents[j]].count;
+            }
+        }
+        events[i].count = count;
+    }
+
     console.log('events--------', JSON.stringify(events));
     return events;
   }
@@ -117,11 +113,20 @@ export class EventService {
         collidingEvents: [],
       },
       {
+        title: 'Architecture Meet2',
+        subtitle: 'Meeting Room D',
+        start: 40,
+        end: 300,
+        id: 5,
+        count: 1,
+        collidingEvents: [],
+      },
+      {
         title: 'Product Meet',
         subtitle: 'Meeting Room C',
         start: 120,
         end: 180,
-        id: 5,
+        id: 6,
         count: 1,
         collidingEvents: [],
       }

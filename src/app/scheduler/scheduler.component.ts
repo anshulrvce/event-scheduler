@@ -12,10 +12,8 @@ export class SchedulerComponent implements OnInit {
 
 events: Array<any> = [];
  timeArray: Array<string> = [];
- chosenCity; // create variable for saving current (chosen) city
  @HostListener('document:listenToLayout', ['$event'])
  updateLayout(event) {
-   console.log('Do stuff here');
  }
 
 

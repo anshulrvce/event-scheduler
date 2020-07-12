@@ -69,7 +69,6 @@ export class EventService {
           if ( events[i].end > events[j].start && events[i].start < events[j].end  ){
                 if ((events[j].start < endTime || endTime === null) && i !== j ){
                   endArray.push(events[j].end);
-                  console.log(endArray);
                   for (let k = 0; k < endArray.length; k++){
                       if (events[j].start >= endArray[k]){
                         endArray[k] = events[j].end;
@@ -91,84 +90,42 @@ export class EventService {
     // tslint:disable-next-line: prefer-for-of
     events = this.calculateColSpanEvents(events);
     events = this.positonEvents(events);
-
-    console.log(events)
     return events;
   }
-  getEvents(): Array<Event> {
+  getEvents(): Array<any> {
     return [
       {
-        title: 'Greeting Meeting',
-        subtitle: 'Meeting Room A',
         start: 30,
-        end: 60,
-        id: 1,
-        count: 1,
-        collidingEvents: [],
+        end: 60
       },
       {
-        title: 'Design Meet',
-        subtitle: 'Meeting Room C',
         start: 60,
-        end: 120,
-        id: 2,
-        count: 1,
-        collidingEvents: [],
+        end: 120
       },
       {
-        title: 'Development Meet',
-        subtitle: 'Meeting Room D',
         start: 300,
-        end: 360,
-        id: 3,
-        count: 1,
-        collidingEvents: [],
+        end: 360
       },
       {
-        title: 'Architecture Meet',
-        subtitle: 'Meeting Room A',
         start: 90,
-        end: 300,
-        id: 4,
-        count: 1,
-        collidingEvents: [],
+        end: 300
       },
       {
-        title: 'Architecture Meet',
-        subtitle: 'Meeting Room A',
         start: 20,
-        end: 300,
-        id: 4,
-        count: 1,
-        collidingEvents: [],
+        end: 300
       },
       {
-        title: 'Architecture Meet',
-        subtitle: 'Meeting Room A',
         start: 220,
-        end: 389,
-        id: 4,
-        count: 1,
-        collidingEvents: [],
+        end: 389
       },
       {
-        title: 'Architecture Meet2',
-        subtitle: 'Meeting Room D',
         start: 40,
-        end: 300,
-        id: 5,
-        count: 1,
-        collidingEvents: [],
+        end: 300
       },
       {
-        title: 'Product Meet',
-        subtitle: 'Meeting Room C',
         start: 120,
-        end: 180,
-        id: 6,
-        count: 1,
-        collidingEvents: [],
+        end: 180
       }
-    ]; // method returns an array of cities
+    ];
   }
 }

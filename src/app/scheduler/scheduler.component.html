@@ -1,0 +1,12 @@
+<div class="page">
+  <div class="page-body">
+    <div class="page-body__sidebar">
+      <ul class="time-list">
+        <li *ngFor="let time of timeArray; index as i" [style.height]="'38px'" [style.align]="'right'">{{time}}</li>
+      </ul>
+    </div>
+    <div class="page-body__details">
+      <app-event [events]="events"></app-event>
+    </div>
+  </div>
+</div>
